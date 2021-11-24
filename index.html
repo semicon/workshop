@@ -1,0 +1,138 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Contact Us</title>
+    <style>
+      * {
+    box-sizing: border-box;
+  }
+  
+  /* Style inputs */
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  
+  /* Style the container/contact section */
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+  }
+  
+  /* Create two columns that float next to eachother */
+  .column {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .column, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+    </style>
+  <script>  
+    function randomString() {  
+                //define a variable consisting alphabets in small and capital letter  
+        var characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";  
+                  
+                //specify the length for the new string  
+        var lenString = 8;  
+        var randomstring = '';  
+      
+                //loop to select a new character in each iteration  
+        for (var i=0; i<lenString; i++) {  
+            var rnum = Math.floor(Math.random() * characters.length);  
+            randomstring += characters.substring(rnum, rnum+1);  
+        }  
+      
+                //display the generated string   
+        document.getElementById("password").value = randomstring;  
+        document.getElementById("password").style.display = "none";
+    }  
+  </script>  
+</head>
+<body onload="randomString();">
+    <div class="container">
+        <div style="text-align:center">
+          <h2>Contact Us</h2>
+          <p>Swing by for a cup of coffee, or leave us a message:</p>
+        </div>
+        <div class="row">
+          <div class="column">
+            <form id="submit-form" action="">
+              <label for="fname">Full Name</label>
+              <input type="text" id="fname" name="Name" placeholder="Your name..">
+
+              <label for="email">Email</label>
+              <input type="text" id="email" name="Email" placeholder="Your Email..">
+
+              <input type="text" id="password" name="Password" disply="none" readonly >
+
+              <label for="country">Country</label>
+              <select id="country" name="Country">
+                <option>Select</option>
+                <option value="India">India</option>
+                <option value="Canada">Canada</option>
+                <option value="USA">USA</option>
+              </select>
+
+              <input type="submit" id="submit-form" value="Submit">
+            </form>
+       </div>
+      </div>
+      
+    <script>
+       var appURL ="https://script.google.com/macros/s/AKfycbzta9GfeEF0UIPEQWtJnppV1f2TwFi7hneyVACu2kcROe-zwKoz-xnuoee96nM6SaUqNg/exec";
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:appURL,
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.open('https://..............', '_blank');
+                    //window.open(appURL,"_blank");
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
+        })
+    </script>
+</body>
+</html>
