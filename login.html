@@ -13,7 +13,7 @@
     <br>
     <input type="password" id="password" placeholder="Password" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;"/>
     <br><span id="errorMessage" style="color: red" ></span><br>
-    <input type="submit" value="Login" onclick="LoginUser()"  style="float: right;padding-top: 1px;padding-bottom: 1px;padding-left: 10px;padding-right: 10px;font-size: 0.9em;font-weight:bold;" /><br>
+    <input type="submit" value="Login" onclick="LoginUser(this);"  style="float: right;padding-top: 1px;padding-bottom: 1px;padding-left: 10px;padding-right: 10px;font-size: 0.9em;font-weight:bold;" /><br>
     <br>
     <b>If you don't have an account,</b><input type="button" onClick="function1()" value="Create New" style="margin-top: 5px;font-weight:bold;" />
    </form>
@@ -33,9 +33,8 @@
         {
           document.getElementById("errorMessage").innerHTML = "Invalid data";     
         }    
-      })
+      }).checkLogin(username, password);
       }
-      google.script.run.checkLogin(username, password);
    </script>
   </body>
 </html>
