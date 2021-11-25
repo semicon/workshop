@@ -2,24 +2,6 @@
 <html>
   <head>
     <base target="_top">
-    <script>
-     function LoginUser()
-    {
-    var username = document.getElementById("username").value;
-    var password = document.getElementById("password").value;
-    google.script.run.withSuccessHandler(function(output) 
-    {
-      if(output == 'TRUE')
-      {
-         document.getElementById("errorMessage").innerHTML = "Ok";    
-      }
-      else if(output == 'FALSE')
-      {
-        document.getElementById("errorMessage").innerHTML = "Invalid data";     
-      }    
-    }).checkLogin(username, password);
-    }
-    </script>
   </head>
   <body>
     <center>
@@ -36,5 +18,23 @@
     <b>If you don't have an account,</b><input type="button" onClick="function1()" value="Create New" style="margin-top: 5px;font-weight:bold;" />
    </form>
  </div>
+   <script>
+    function LoginUser()
+      {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      google.script.run.withSuccessHandler(function(output) 
+      {
+        if(output == 'TRUE')
+        {
+           document.getElementById("errorMessage").innerHTML = "Ok";    
+        }
+        else if(output == 'FALSE')
+        {
+          document.getElementById("errorMessage").innerHTML = "Invalid data";     
+        }    
+      }).checkLogin(username, password);
+      }
+   </script>
   </body>
 </html>
