@@ -19,12 +19,10 @@
    </form>
  </div>
    <script>
-    function LoginUser(username, password)
-      {
+    function LoginUser(username, password){
       var username = document.getElementById("username").value;
       var password = document.getElementById("password").value;
-      google.script.run.withSuccessHandler(function(output) 
-      {
+      google.script.run.withSuccessHandler(function(output){
         if(output == 'TRUE')
         {
            document.getElementById("errorMessage").innerHTML = "OK.............";    
