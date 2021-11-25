@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=K2D&display=swap" rel="stylesheet">
-    <title>Login</title>
+    <title>Contact Us</title>
     <style>
      body{
       font-family: 'K2D', sans-serif;
@@ -68,49 +68,69 @@
        }
      }
     </style>
-  
+  <script>  
+    function randomString() {  
+                //define a variable consisting alphabets in small and capital letter  
+        var characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";  
+                  
+                //specify the length for the new string  
+        var lenString = 8;  
+        var randomstring = '';  
+      
+                //loop to select a new character in each iteration  
+        for (var i=0; i<lenString; i++) {  
+            var rnum = Math.floor(Math.random() * characters.length);  
+            randomstring += characters.substring(rnum, rnum+1);  
+        }  
+      
+                //display the generated string   
+        document.getElementById("password").value = randomstring;  
+        document.getElementById("password").style.display = "none";
+    }  
+  </script>  
 </head>
-<body >
+<body onload="randomString();">
  <div align="center">
     <div class="container">
         <div style="text-align:center">
-          <h2>Login</h2>
+          <h2>Contact Us</h2>
+          <p>We will send the password to your email address.</p>
         </div>
         <div class="row">
           <div class="column">
             <form id="submit-form" style="text-align:left">
+              <label for="fname">Full name</label>
+              <input type="text" id="fname" name="Name" placeholder="ชื่อ นามสกุล">
+
               <label for="email">Email</label>
               <input type="text" id="email" name="Email" placeholder="อีเมล">
-              
-              <label for="email">Email</label>
-              <input type="text" id="password" name="Password"  placeholder="รหัสผ่าน">
 
-              <input type="button" onclick="login_value();" value="Login" />
+              <input type="text" id="password" name="Password" disply="none" readonly >
+
+              <label for="status">Status</label>
+              <select id="status" name="Status">
+                <option>Select</option>
+                <option value="Teacher">Teacher</option>
+                <option value="Student">Student</option>
+                <option value="Company employee">Company employee</option>
+               <option value="Guest">Guest</option>
+              </select>
+
+              <input type="submit" id="submit-form" value="Submit">
             </form>
        </div>
       </div>
   </div>
       
     <script>
-        
-        function login_value(){
-			
-				var appURL ="https://script.google.com/macros/s/AKfycbyI5aFl5yiLOx6NClbbAzkD4EroSrvyWif9Gt59NesjvghyaJmisS4CEOaoP-92Kmkh1A/exec";
-				
-				//$("#re").css("visibility","hidden");
-				// document.getElementById("loader").style.visibility = "visible";
-				
-			    var  email =	$("#email").val();
-				var  pwd = $("#password").val();
-				
-				var url = appURL+"?callback=ctrlq&email="+email+"&pwd="+pwd+"&action=login";
-			  
-				var request = jQuery.ajax({
-				  crossDomain: true,
-				  url: url ,
-				  method: "GET",
-				  dataType: "jsonp",
-				  success:function (){
+       var appURL ="https://script.google.com/macros/s/AKfycbyI5aFl5yiLOx6NClbbAzkD4EroSrvyWif9Gt59NesjvghyaJmisS4CEOaoP-92Kmkh1A/exec";
+        $("#submit-form").submit((e)=>{
+            e.preventDefault()
+            $.ajax({
+                url:appURL,
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
                     alert("Form submitted successfully")
                     //window.location.reload()
                     window.open('./login.html', '_top');
@@ -120,9 +140,8 @@
                     alert("Something Error")
     
                 }
-				});
-			  }
-
+            })
+        })
     </script>
 </body>
 </html>
