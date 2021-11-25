@@ -20,8 +20,8 @@
  </div>
    <script>
     function LoginUser(){
-      var username = document.getElementById("username").value;
-      var password = document.getElementById("password").value;
+      var emailUser = document.getElementById("username").value;
+      var pwd = document.getElementById("password").value;
       google.script.run.withSuccessHandler(function(output){
         if(output == 'TRUE')
         {
@@ -31,7 +31,7 @@
         {
           document.getElementById("errorMessage").innerHTML = "Invalid data";     
         }    
-      }).checkLogin(username, password);
+      }).checkLogin(emailUser, pwd);
       }
    </script>
   </body>
