@@ -8,17 +8,19 @@
  <div class="page1_class1" id="page1_id1" style="background:none;border:2px solid gray;border-radius: 20px;width: 250px;padding-top: 10px;padding-bottom: 20px;padding-left: 20px;padding-right: 20px;"> 
     <h1>Login Form</h1>
     <br>
-    <form id="submit-form">
+    <form id="submit-form" onSubmit="">
     <input type="text" id="username" placeholder="Username" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;"/><br>
     <br>
     <input type="password" id="password" placeholder="Password" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;"/>
     <br><span id="errorMessage" style="color: red" ></span><br>
-    <input type="submit"  onclick="LoginUser();"  style="float: right;padding-top: 1px;padding-bottom: 1px;padding-left: 10px;padding-right: 10px;font-size: 0.9em;font-weight:bold;" /><br>
+     <input type="submit" value="Submit"><br>
     <br>
+    </form>
     <b>If you don't have an account,</b><input type="button" onClick="function1()" value="Create New" style="margin-top: 5px;font-weight:bold;" />
-   </form>
+
  </div>
    <script>
+     document.getElementById("submit-form").addEventListener("submit", LoginUser);
     function LoginUser(){
       var emailUser = document.getElementById("username").value;
       var pwd = document.getElementById("password").value;
