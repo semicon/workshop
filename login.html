@@ -2,30 +2,14 @@
 <html>
   <head>
     <base target="_top">
-       <script>
-     document.getElementById("submit-form").addEventListener("submit", LoginUser);
-    function LoginUser(){
-      var emailUser = document.getElementById("username").value;
-      var pwd = document.getElementById("password").value;
-      google.script.run.withSuccessHandler(function(output){
-        if(output == 'TRUE')
-        {
-           document.getElementById("errorMessage").innerHTML = "OK.............";    
-        }
-        else if(output == 'FALSE')
-        {
-          document.getElementById("errorMessage").innerHTML = "Invalid data";     
-        }    
-      }).checkLogin(emailUser, pwd);
-      }
-   </script>
+
   </head>
   <body>
     <center>
  <div class="page1_class1" id="page1_id1" style="background:none;border:2px solid gray;border-radius: 20px;width: 250px;padding-top: 10px;padding-bottom: 20px;padding-left: 20px;padding-right: 20px;"> 
     <h1>Login Form</h1>
     <br>
-    <form id="submit-form" onSubmit="">
+    <form id="submit-form" action="">
     <input type="text" id="username" placeholder="Username" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;"/><br>
     <br>
     <input type="password" id="password" placeholder="Password" style="border-top: none;border-right: none;border-left: none;outline: none; text-align: center;font-size:0.9em ;width: 50%;font-weight:bold;"/>
@@ -36,6 +20,23 @@
     <b>If you don't have an account,</b><input type="button" onClick="function1()" value="Create New" style="margin-top: 5px;font-weight:bold;" />
 
  </div>
-
+       <script>
+         var appURL ="https://script.google.com/macros/s/AKfycbyI5aFl5yiLOx6NClbbAzkD4EroSrvyWif9Gt59NesjvghyaJmisS4CEOaoP-92Kmkh1A/exec";
+         document.getElementById("submit-form").addEventListener("submit", LoginUser);
+          function LoginUser(){
+            var emailUser = document.getElementById("username").value;
+            var pwd = document.getElementById("password").value;
+            appURL.google.script.run.withSuccessHandler(function(output){
+              if(output == 'TRUE')
+              {
+                 document.getElementById("errorMessage").innerHTML = "OK.............";    
+              }
+              else if(output == 'FALSE')
+              {
+                document.getElementById("errorMessage").innerHTML = "Invalid data";     
+              }    
+            }).checkLogin(emailUser, pwd);
+            }
+   </script>
   </body>
 </html>
