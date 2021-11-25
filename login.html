@@ -2,6 +2,23 @@
 <html>
   <head>
     <base target="_top">
+       <script>
+     document.getElementById("submit-form").addEventListener("submit", LoginUser);
+    function LoginUser(){
+      var emailUser = document.getElementById("username").value;
+      var pwd = document.getElementById("password").value;
+      google.script.run.withSuccessHandler(function(output){
+        if(output == 'TRUE')
+        {
+           document.getElementById("errorMessage").innerHTML = "OK.............";    
+        }
+        else if(output == 'FALSE')
+        {
+          document.getElementById("errorMessage").innerHTML = "Invalid data";     
+        }    
+      }).checkLogin(emailUser, pwd);
+      }
+   </script>
   </head>
   <body>
     <center>
@@ -19,22 +36,6 @@
     <b>If you don't have an account,</b><input type="button" onClick="function1()" value="Create New" style="margin-top: 5px;font-weight:bold;" />
 
  </div>
-   <script>
-     document.getElementById("submit-form").addEventListener("submit", LoginUser);
-    function LoginUser(){
-      var emailUser = document.getElementById("username").value;
-      var pwd = document.getElementById("password").value;
-      google.script.run.withSuccessHandler(function(output){
-        if(output == 'TRUE')
-        {
-           document.getElementById("errorMessage").innerHTML = "OK.............";    
-        }
-        else if(output == 'FALSE')
-        {
-          document.getElementById("errorMessage").innerHTML = "Invalid data";     
-        }    
-      }).checkLogin(emailUser, pwd);
-      }
-   </script>
+
   </body>
 </html>
