@@ -119,7 +119,27 @@
 		  console.log(e);
 		  //$("#re").html(e.result);
 		  //$("#re").css("visibility", "visible");
-		  //read_value();
+		  read_value();
+		}
+	    
+	    function read_value(request,ss){
+
+		  var output  = ContentService.createTextOutput(), data    = {};
+		  //Note : here sheet is sheet name , don't get confuse with other operation
+		      var sheet="responses";
+
+		  data.records = readData_(ss, sheet);
+
+		  var callback = request.parameters.callback;
+
+		  if (callback === undefined) {
+		    output.setContent(JSON.stringify(data));
+		  } else {
+		    output.setContent(callback + "(" + JSON.stringify(data) + ")");
+		  }
+		  output.setMimeType(ContentService.MimeType.JAVASCRIPT);
+
+		  return output;
 		}
 
     </script>
