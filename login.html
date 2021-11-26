@@ -103,7 +103,7 @@
 			        var  email = $("#email").val();
 				var  pwd = $("#password").val();
 				
-				var url = appURL+"?callback=email="+email+"&pwd="+pwd+"&action=login";
+				var url = appURL+"?callback=ctrlq&email="+email+"&pwd="+pwd+"&action=login";
 			  
 				var request = jQuery.ajax({
 				  crossDomain: true,
@@ -112,6 +112,15 @@
 				  dataType: "jsonp"
 				});
 			  }
+	    
+	    // print the returned data
+		function ctrlq(e)
+		{
+		  console.log(e);
+		  //$("#re").html(e.result);
+		  //$("#re").css("visibility", "visible");
+		  //read_value();
+		}
 
     </script>
 </body>
