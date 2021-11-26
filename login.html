@@ -109,17 +109,7 @@
 				  crossDomain: true,
 				  url: url ,
 				  method: "GET",
-				  dataType: "jsonp",
-				  success:function (){
-                    alert("Form submitted successfully")
-                    //window.location.reload()
-                    window.open('./login.html', '_top');
-                    //window.open(appURL,"_blank");
-                },
-                error:function (err){
-                    alert("Something Error")
-    
-                }
+				  dataType: "jsonp"
 				});
 			  }
 
