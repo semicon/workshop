@@ -100,10 +100,10 @@
 				//$("#re").css("visibility","hidden");
 				// document.getElementById("loader").style.visibility = "visible";
 				
-			    var  email =	$("#email").val();
+			        var  email = $("#email").val();
 				var  pwd = $("#password").val();
 				
-				var url = appURL+"?callback=ctrlq&email="+email+"&pwd="+pwd+"&action=login";
+				var url = appURL+"?callback=email="+email+"&pwd="+pwd+"&action=login";
 			  
 				var request = jQuery.ajax({
 				  crossDomain: true,
